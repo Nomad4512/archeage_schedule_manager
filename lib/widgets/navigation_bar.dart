@@ -19,7 +19,7 @@ class NaviBar extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
                 icon: Icon(Icons.list_alt_rounded),
@@ -27,7 +27,6 @@ class NaviBar extends StatelessWidget {
                 iconSize: MediaQuery.of(context).size.height * 0.07, // 화면 높이에 따라 아이콘 크기 조절
                 onPressed: () {},
               ),
-              SizedBox(width: MediaQuery.of(context).size.width * 0.05), // 화면 너비에 따라 간격 조절
               IconButton(
                 icon: Icon(Icons.home_rounded),
                 iconSize: MediaQuery.of(context).size.height * 0.07, // 화면 높이에 따라 아이콘 크기 조절
@@ -38,7 +37,6 @@ class NaviBar extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(width: MediaQuery.of(context).size.width * 0.05), // 화면 너비에 따라 간격 조절
               IconButton(
                 icon: Icon(Icons.event_available_rounded),
                 iconSize: MediaQuery.of(context).size.height * 0.07, // 화면 높이에 따라 아이콘 크기 조절

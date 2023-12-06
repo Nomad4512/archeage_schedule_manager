@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../widgets/navigation_bar.dart';
+import '../widgets/schedule_card.dart';
 
 class ScheduleScreen extends StatefulWidget {
   const ScheduleScreen({super.key});
@@ -10,18 +13,20 @@ class ScheduleScreen extends StatefulWidget {
 }
 
 class _ScheduleScreenState extends State<ScheduleScreen> {
+
+  Timer? timer;
+
+
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: Color(0xFF181818),
       body: Column(
         children: [
-          Flexible(
+          Expanded(
             flex: 2,
             child: Container(
-              decoration: BoxDecoration(
-                color: Colors.red
-              ),
               alignment: Alignment.center,
               child: const Text(
                 ('일정 남은시간'),
@@ -32,16 +37,17 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
               )
             ),
           ),
-          Flexible(
-            flex: 6,
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.blue
-              ),
-
-            )
+          Expanded(
+            flex: 8,
+                child: Column(
+                  children: [
+                    ScheduleCard(height: 200,),
+                    const SizedBox(height: 20,),
+                    ScheduleCard(height: 300,),
+                  ],
+                ),
           ),
-          Flexible(
+          const Expanded(
             flex: 1,
             child: NaviBar(),
           ),

@@ -21,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     super.initState();
     // 1초마다 현재 시간 업데이트
-    Timer.periodic(Duration(seconds: 1), (timer) {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         formattedTime = DateFormat('hh:mm:ss a').format(DateTime.now());
       });
@@ -32,10 +32,10 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0xFF181818),
+        backgroundColor: const Color(0xFF181818),
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.
               start,
@@ -128,7 +128,6 @@ class _MainScreenState extends State<MainScreen> {
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                       ),
-
                     ),
                   ],
                 ),
@@ -161,7 +160,6 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ],
             ),
-
           ),
         ),
       ),
