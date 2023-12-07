@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../models/daily_schedule.dart';
 import '../widgets/navigation_bar.dart';
 import '../widgets/schedule_card.dart';
 
@@ -14,9 +15,39 @@ class ScheduleScreen extends StatefulWidget {
 
 class _ScheduleScreenState extends State<ScheduleScreen> {
 
-  Timer? timer;
+  late Timer timer;
+  List<DailySchedule> schedules = [];
+  List<DailySchedule> dailySchedules = DailySchedule.initializeSchedules();
 
+  @override
+  void initState() {
+    super.initState();
+    schedules = DailySchedule.initializeSchedules();
+    timer = Timer.periodic(Duration(seconds: 1), (Timer t) => updateRemainingTime());
+  }
 
+  void updateRemainingTime() {
+    setState(() {
+      DateTime now = DateTime.now();
+      for (var schedule in schedules) {
+        // 현재 시간 이후의 가장 가까운 시간을 찾습니다.
+        schedule.times = schedule.times
+            .where((time) => time.isAfter(now))
+            .toList();
+
+        if (schedule.times.isNotEmpty) {
+          // 리스트가 비어 있지 않다면, 가장 가까운 시간으로 정렬합니다.
+          schedule.times.sort((a, b) => a.compareTo(b));
+        }
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,13 +68,13 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
               )
             ),
           ),
-          Expanded(
+           Expanded(
             flex: 8,
                 child: Column(
                   children: [
-                    ScheduleCard(height: 200,),
+                    ScheduleCard(multi: 1, schedules: dailySchedules),
                     const SizedBox(height: 20,),
-                    ScheduleCard(height: 300,),
+                    ScheduleCard(multi: 2, schedules: dailySchedules),
                   ],
                 ),
           ),
