@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/schedule_screen.dart';
+import '../screens/schedule_screen_daily.dart';
 
 class Button extends StatelessWidget {
 
@@ -8,7 +8,7 @@ class Button extends StatelessWidget {
   final Color bgColor;
   final Color textColor;
 
-  const Button({
+  const Button({super.key,
     required this.text,
     required this.bgColor,
     required this.textColor
@@ -21,7 +21,7 @@ class Button extends StatelessWidget {
         // 버튼을 눌렀을 때 ScheduleScreen으로 이동
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ScheduleScreen()),
+          MaterialPageRoute(builder: (context) => const ScheduleScreen()),
         );
       },
       child:

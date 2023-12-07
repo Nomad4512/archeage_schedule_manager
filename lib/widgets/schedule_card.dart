@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import '../models/daily_schedule.dart';
 
 class ScheduleCard extends StatelessWidget {
-  final double multi;
   final List<DailySchedule> schedules;
 
   const ScheduleCard({
     Key? key,
-    required this.multi,
     required this.schedules,
   }) : super(key: key);
 
@@ -23,7 +21,7 @@ class ScheduleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // 화면 크기를 기준으로 카드의 높이를 계산합니다.
     var screenSize = MediaQuery.of(context).size;
-    double cardHeight = screenSize.height * 0.2 * multi; // multi : 화면 높이 배수
+    double cardHeight = screenSize.height * 0.7;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -57,7 +55,7 @@ class ScheduleCard extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         schedule.scheduleName,
-                        style: TextStyle(fontSize: 30, color: Colors.white),
+                        style: const TextStyle(fontSize: 30, color: Colors.white),
                       ),
                     ),
                   ),
@@ -67,7 +65,7 @@ class ScheduleCard extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         remainingTime <= Duration.zero ? '일정이 끝났습니다.' : formatDuration(remainingTime),
-                        style: TextStyle(fontSize: 30, color: Colors.white),
+                        style: const TextStyle(fontSize: 30, color: Colors.white),
                       ),
                     ),
                   ),

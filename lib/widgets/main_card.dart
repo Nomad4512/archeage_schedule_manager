@@ -7,7 +7,7 @@ class CurrencyCard extends StatelessWidget {
   final double offsetY;
   final IconData icon;
 
-  const CurrencyCard({
+  const CurrencyCard({super.key,
     required this.bgColor,
     required this.txtColor,
     required this.currencyB,
@@ -43,7 +43,7 @@ class CurrencyCard extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(

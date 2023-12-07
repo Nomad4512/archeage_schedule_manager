@@ -7,6 +7,8 @@ import '../buttons/main_button.dart';
 import '../widgets/main_card.dart';
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -114,7 +116,7 @@ class _MainScreenState extends State<MainScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      '주요일정',
+                      '즐겨찾기',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 36,
@@ -122,7 +124,7 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ),
                     Text(
-                      'View all',
+                      '수정하기',
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.8),
                         fontSize: 18,
@@ -131,7 +133,7 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 const CurrencyCard(

@@ -22,23 +22,23 @@ class NaviBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                icon: Icon(Icons.list_alt_rounded),
+                icon: const Icon(Icons.list_alt_rounded),
                 color: Colors.indigo,
                 iconSize: MediaQuery.of(context).size.height * 0.07, // 화면 높이에 따라 아이콘 크기 조절
                 onPressed: () {},
               ),
               IconButton(
-                icon: Icon(Icons.home_rounded),
+                icon: const Icon(Icons.home_rounded),
                 iconSize: MediaQuery.of(context).size.height * 0.07, // 화면 높이에 따라 아이콘 크기 조절
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MainScreen()),
+                    MaterialPageRoute(builder: (context) => const MainScreen()),
                   );
                 },
               ),
               IconButton(
-                icon: Icon(Icons.event_available_rounded),
+                icon: const Icon(Icons.event_available_rounded),
                 iconSize: MediaQuery.of(context).size.height * 0.07, // 화면 높이에 따라 아이콘 크기 조절
                 onPressed: () {},
               ),

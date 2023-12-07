@@ -25,7 +25,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   void initState() {
     super.initState();
     schedules = DailySchedule.initializeSchedules();
-    timer = Timer.periodic(Duration(seconds: 1), (Timer t) => updateRemainingTime());
+    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => updateRemainingTime());
   }
 
   void updateRemainingTime() {
@@ -54,7 +54,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: Color(0xFF181818),
+      backgroundColor: const Color(0xFF181818),
       body: Column(
         children: [
           Expanded(
@@ -62,7 +62,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
             child: Container(
               alignment: Alignment.center,
               child: const Text(
-                ('일정 남은시간'),
+                ('일정 타이머'),
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 40,
@@ -74,9 +74,8 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
             flex: 8,
                 child: Column(
                   children: [
-                    ScheduleCard(multi: 1, schedules: dailySchedules),
-                    const SizedBox(height: 20,),
-                    ScheduleCard(multi: 2, schedules: weeklySchedules),
+                    ScheduleCard(schedules: weeklySchedules),
+
                   ],
                 ),
           ),
