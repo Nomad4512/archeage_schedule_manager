@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../models/daily_schedule.dart';
+import '../models/weekly_schedule.dart';
 import '../widgets/navigation_bar.dart';
 import '../widgets/schedule_card.dart';
 
@@ -18,6 +19,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   late Timer timer;
   List<DailySchedule> schedules = [];
   List<DailySchedule> dailySchedules = DailySchedule.initializeSchedules();
+  List<DailySchedule> weeklySchedules = WeeklySchedule.getTodaysSchedules();
 
   @override
   void initState() {
@@ -74,7 +76,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                   children: [
                     ScheduleCard(multi: 1, schedules: dailySchedules),
                     const SizedBox(height: 20,),
-                    ScheduleCard(multi: 2, schedules: dailySchedules),
+                    ScheduleCard(multi: 2, schedules: weeklySchedules),
                   ],
                 ),
           ),
