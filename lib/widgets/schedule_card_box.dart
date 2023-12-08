@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CardBox extends StatelessWidget {
+class ScheduleCardBox extends StatelessWidget {
 
   final String longName;
   final String shortName;
   final String remainingTime;
 
-  const CardBox({
+  const ScheduleCardBox({
     super.key, required this.longName, required this.shortName, required this.remainingTime,
   });
 

@@ -1,12 +1,15 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../models/daily_schedule.dart';
 import '../../widgets/navigation_bar.dart';
+import '../../widgets/navigation_bar_provider.dart';
 import '../../widgets/schedule_card.dart';
 
 class DailyScheduleScreen extends StatefulWidget {
-  const DailyScheduleScreen({Key? key}) : super(key: key);
+  final int index;
+  const DailyScheduleScreen({Key? key, required this.index}) : super(key: key);
 
   @override
   State<DailyScheduleScreen> createState() => _DailyScheduleScreenState();
@@ -15,7 +18,6 @@ class DailyScheduleScreen extends StatefulWidget {
 class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
   late Timer timer;
   List<DailySchedule> dailySchedules = DailySchedule.initializeSchedules();
-
 
   @override
   void initState() {
@@ -46,6 +48,7 @@ class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final navigationProvider = Provider.of<NavigationBarProvider>(context);
     return Scaffold(
       backgroundColor: Color(0xFF101316),
       body: Column(
@@ -61,7 +64,12 @@ class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
           ),
           Expanded(
             flex: 2,
-            child: NaviBar(),
+            child: NaviBar(
+              currentIndex: navigationProvider.selectedIndex,
+              onTap: (index) {
+                navigationProvider.selectedIndex = index; // 선택된 인덱스 업데이트
+              },
+            ),
           ),
         ],
       ),

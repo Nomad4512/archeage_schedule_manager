@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:schedule_manager/screens/checklists/checklist_screen_main.dart';
 
 import '../screens/schedules/schedule_screen_main.dart';
+import '../widgets/navigation_bar_provider.dart';
 
 
 class Button extends StatelessWidget {
@@ -22,10 +25,18 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => MainSchedule(whereToGo: whereToGo)),
-        );
+          if(whereToGo == 'daily'){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MainSchedule(whereToGo: whereToGo,index: 10)),
+            );
+        } else {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MainCheck(whereToGo: whereToGo,index: 20)),
+            );
+        }
+
       },
       child:
         Container(

@@ -34,6 +34,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: const Color(0xFF181818),
       body: SingleChildScrollView(
@@ -106,7 +107,7 @@ class _MainScreenState extends State<MainScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Button(text: '일정시간', bgColor: Color(0xFFF1B33B), textColor: Colors.black, whereToGo: 'daily',),
-                  Button(text: '체크리스트', bgColor: Color(0xFF1F2123), textColor: Colors.white, whereToGo: 'weekly',),
+                  Button(text: '체크리스트', bgColor: Color(0xFF1F2123), textColor: Colors.white, whereToGo: 'check',),
                 ],
               ),
               const SizedBox(
@@ -130,20 +131,19 @@ class _MainScreenState extends State<MainScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MainSchedule(whereToGo: 'favorite'),
+                          builder: (context) => MainSchedule(index: 13, whereToGo: 'favorite',),
                         ),
                       );
                     },
                     style: TextButton.styleFrom(
-                      primary: Colors.white.withOpacity(0.8), // 텍스트 색상
+                      foregroundColor: Colors.white.withOpacity(0.8),
                       textStyle: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
                       ),
                     ),
                     child: Text('수정하기'),
                   )
-
                 ],
               ),
               const SizedBox(

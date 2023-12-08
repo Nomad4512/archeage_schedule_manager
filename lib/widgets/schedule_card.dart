@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/daily_schedule.dart';
-import 'card_inside_box.dart';
+import 'schedule_card_box.dart';
 
 class ScheduleCard extends StatelessWidget {
   final List<DailySchedule> schedules;
@@ -35,7 +35,7 @@ class ScheduleCard extends StatelessWidget {
             ? upcomingTime.difference(DateTime.now())
             : Duration.zero;
 
-        return CardBox(
+        return ScheduleCardBox(
           longName: schedule.longName,
           shortName: schedule.shortName,
           remainingTime: formatDuration(remainingTime),
