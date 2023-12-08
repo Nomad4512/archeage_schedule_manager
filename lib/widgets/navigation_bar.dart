@@ -15,7 +15,7 @@ class NaviBar extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Color(0xFF101316),
             borderRadius: BorderRadius.circular(30),
           ),
           child: Row(
@@ -23,13 +23,14 @@ class NaviBar extends StatelessWidget {
             children: [
               IconButton(
                 icon: const Icon(Icons.list_alt_rounded),
-                color: Colors.indigo,
-                iconSize: MediaQuery.of(context).size.height * 0.07, // 화면 높이에 따라 아이콘 크기 조절
+                color: Color(0xFF877DE7),
+                iconSize: MediaQuery.of(context).size.height * 0.04, // 화면 높이에 따라 아이콘 크기 조절
                 onPressed: () {},
               ),
               IconButton(
                 icon: const Icon(Icons.home_rounded),
-                iconSize: MediaQuery.of(context).size.height * 0.07, // 화면 높이에 따라 아이콘 크기 조절
+                color: Color(0xFF97A1AB),
+                iconSize: MediaQuery.of(context).size.height * 0.04, // 화면 높이에 따라 아이콘 크기 조절
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -39,7 +40,8 @@ class NaviBar extends StatelessWidget {
               ),
               IconButton(
                 icon: const Icon(Icons.event_available_rounded),
-                iconSize: MediaQuery.of(context).size.height * 0.07, // 화면 높이에 따라 아이콘 크기 조절
+                color: Color(0xFF97A1AB),
+                iconSize: MediaQuery.of(context).size.height * 0.04, // 화면 높이에 따라 아이콘 크기 조절
                 onPressed: () {},
               ),
             ],

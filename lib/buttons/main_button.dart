@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:schedule_manager/screens/schedule_screen_weekly.dart';
 
 import '../screens/schedule_screen_daily.dart';
+import '../screens/schedule_screen_main.dart';
+
 
 class Button extends StatelessWidget {
 
   final String text;
   final Color bgColor;
   final Color textColor;
+  final String whereToGo;
 
-  const Button({super.key,
+  const Button({
+    Key? key,
     required this.text,
     required this.bgColor,
-    required this.textColor
-  });
+    required this.textColor,
+    required this.whereToGo, // 생성자를 통해 whereToGo를 받음
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return  GestureDetector(
       onTap: () {
-        // 버튼을 눌렀을 때 ScheduleScreen으로 이동
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const ScheduleScreen()),
+          MaterialPageRoute(builder: (context) => MainSchedule(whereToGo: whereToGo)),
         );
       },
       child:

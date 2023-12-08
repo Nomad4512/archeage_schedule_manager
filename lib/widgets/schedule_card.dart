@@ -28,7 +28,7 @@ class ScheduleCard extends StatelessWidget {
       child: Container(
         height: cardHeight,
         decoration: BoxDecoration(
-          color: const Color(0xFF1F2123),
+          color: const Color(0xFF101316),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(

@@ -104,8 +104,8 @@ class _MainScreenState extends State<MainScreen> {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Button(text: '일정시간', bgColor: Color(0xFFF1B33B), textColor: Colors.black),
-                    Button(text: '체크리스트', bgColor: Color(0xFF1F2123), textColor: Colors.white),
+                    Button(text: '일정시간', bgColor: Color(0xFFF1B33B), textColor: Colors.black, whereToGo: 'daily',),
+                    Button(text: '체크리스트', bgColor: Color(0xFF1F2123), textColor: Colors.white, whereToGo: 'weekly',),
                   ],
                 ),
                 const SizedBox(

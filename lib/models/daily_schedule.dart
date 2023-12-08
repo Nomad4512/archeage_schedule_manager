@@ -2,6 +2,7 @@ class DailySchedule {
   String scheduleName;
   List<DateTime> times;
 
+
   DailySchedule(this.scheduleName, this.times);
 
   // 각 일정에 대한 시간을 초기화하는 팩토리 메서드를 추가
