@@ -1,20 +1,23 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:schedule_manager/models/weekly_schedule.dart';
 
-import '../models/daily_schedule.dart';
-import '../widgets/navigation_bar.dart';
-import '../widgets/schedule_card.dart';
+import '../../models/daily_schedule.dart';
+import '../../widgets/navigation_bar.dart';
+import '../../widgets/schedule_card.dart';
 
-class DailyScheduleScreen extends StatefulWidget {
-  const DailyScheduleScreen({Key? key}) : super(key: key);
+
+class WeeklyScheduleScreen extends StatefulWidget {
+  const WeeklyScheduleScreen({Key? key}) : super(key: key);
 
   @override
-  State<DailyScheduleScreen> createState() => _DailyScheduleScreenState();
+  State<WeeklyScheduleScreen> createState() => _DailyScheduleScreenState();
 }
 
-class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
+class _DailyScheduleScreenState extends State<WeeklyScheduleScreen> {
   late Timer timer;
-  List<DailySchedule> dailySchedules = DailySchedule.initializeSchedules();
+  List<DailySchedule> weeklySchedules = WeeklySchedule.getTodaysSchedules();
+
 
   @override
   void initState() {
@@ -26,7 +29,7 @@ class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
   void updateRemainingTime() {
     setState(() {
       DateTime now = DateTime.now();
-      for (var schedule in dailySchedules) { // 현재 시간 이후의 가장 가까운 시간을 찾습니다.
+      for (var schedule in weeklySchedules) { // 현재 시간 이후의 가장 가까운 시간을 찾습니다.
         schedule.times = schedule.times
             .where((time) => time.isAfter(now))
             .toList();
@@ -50,11 +53,16 @@ class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
       body: Column(
         children: [
           Expanded(
-            flex: 9,
-            child: ScheduleCard(schedules: dailySchedules),
+            flex: 8,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                ScheduleCard(schedules: weeklySchedules),
+              ],
+            ),
           ),
-          const Expanded(
-            flex: 1,
+          Expanded(
+            flex: 2,
             child: NaviBar(),
           ),
         ],
@@ -62,3 +70,4 @@ class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
     );
   }
 }
+

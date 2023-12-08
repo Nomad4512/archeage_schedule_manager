@@ -1,21 +1,22 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-import '../models/daily_schedule.dart';
-import '../models/weekly_schedule.dart';
-import '../widgets/navigation_bar.dart';
-import '../widgets/schedule_card.dart';
+import '../../models/daily_schedule.dart';
+import '../../widgets/navigation_bar.dart';
+import '../../widgets/schedule_card.dart';
 
-class WeeklyScheduleScreen extends StatefulWidget {
-  const WeeklyScheduleScreen({Key? key}) : super(key: key);
+class FavoriteScheduleScreen extends StatefulWidget {
+  const FavoriteScheduleScreen({Key? key}) : super(key: key);
 
   @override
-  State<WeeklyScheduleScreen> createState() => _WeeklyScheduleScreenState();
+  State<FavoriteScheduleScreen> createState() => _FavoriteScheduleScreenState();
 }
 
-class _WeeklyScheduleScreenState extends State<WeeklyScheduleScreen> {
+class _FavoriteScheduleScreenState extends State<FavoriteScheduleScreen> {
   late Timer timer;
-  List<DailySchedule> weeklySchedules = WeeklySchedule.getTodaysSchedules();
+  List<DailySchedule> favoriteSchedules = DailySchedule.initializeSchedules();
+  // *** 모델 내용 수정하기
+
 
   @override
   void initState() {
@@ -27,7 +28,7 @@ class _WeeklyScheduleScreenState extends State<WeeklyScheduleScreen> {
   void updateRemainingTime() {
     setState(() {
       DateTime now = DateTime.now();
-      for (var schedule in weeklySchedules) { // 현재 시간 이후의 가장 가까운 시간을 찾습니다.
+      for (var schedule in favoriteSchedules) { // 현재 시간 이후의 가장 가까운 시간을 찾습니다.
         schedule.times = schedule.times
             .where((time) => time.isAfter(now))
             .toList();
@@ -51,11 +52,16 @@ class _WeeklyScheduleScreenState extends State<WeeklyScheduleScreen> {
       body: Column(
         children: [
           Expanded(
-            flex: 9,
-            child: ScheduleCard(schedules: weeklySchedules),
+            flex: 8,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                ScheduleCard(schedules: favoriteSchedules),
+              ],
+            ),
           ),
-          const Expanded(
-            flex: 1,
+          Expanded(
+            flex: 2,
             child: NaviBar(),
           ),
         ],
@@ -63,3 +69,4 @@ class _WeeklyScheduleScreenState extends State<WeeklyScheduleScreen> {
     );
   }
 }
+

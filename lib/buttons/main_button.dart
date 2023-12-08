@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:schedule_manager/screens/schedule_screen_weekly.dart';
 
-import '../screens/schedule_screen_daily.dart';
-import '../screens/schedule_screen_main.dart';
+import '../screens/schedules/schedule_screen_main.dart';
 
 
 class Button extends StatelessWidget {
@@ -22,7 +20,6 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return  GestureDetector(
       onTap: () {
         Navigator.push(

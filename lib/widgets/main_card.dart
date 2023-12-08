@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class CurrencyCard extends StatelessWidget {
+class MainCard extends StatelessWidget {
 
   final Color bgColor, txtColor;
-  final String currencyB, balance;
+  final String shortName, times;
   final double offsetY;
   final IconData icon;
 
-  const CurrencyCard({super.key,
+  const MainCard({super.key,
     required this.bgColor,
     required this.txtColor,
-    required this.currencyB,
-    required this.balance,
+    required this.shortName,
+    required this.times,
     required this.offsetY,
     required this.icon,
   });
@@ -36,7 +36,7 @@ class CurrencyCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(currencyB,
+                  Text(shortName,
                     style: TextStyle(
                       color: txtColor,
                       fontSize:32,
@@ -48,7 +48,7 @@ class CurrencyCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text(balance,
+                      Text(times,
                         style: TextStyle(
                           color: txtColor,
                           fontSize: 20,
@@ -71,7 +71,6 @@ class CurrencyCard extends StatelessWidget {
               )
             ],
           ),
-
         ),
       ),
     );

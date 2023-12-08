@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schedule_manager/screens/main_screen.dart';
-import 'package:schedule_manager/screens/schedule_screen_daily.dart';
+import 'package:schedule_manager/screens/schedules/schedule_screen_daily.dart';
+import 'package:schedule_manager/screens/schedules/schedule_screen_main.dart';
 
 class AasmApp extends StatelessWidget {
   const AasmApp({super.key});

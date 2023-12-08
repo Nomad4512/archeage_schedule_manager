@@ -1,9 +1,8 @@
 class DailySchedule {
-  String scheduleName;
+  String longName, shortName;
   List<DateTime> times;
 
-
-  DailySchedule(this.scheduleName, this.times);
+  DailySchedule(this.longName, this.shortName, this.times);
 
   // 각 일정에 대한 시간을 초기화하는 팩토리 메서드를 추가
   static List<DailySchedule> initializeSchedules() {
@@ -20,7 +19,7 @@ class DailySchedule {
       DateTime(today.year, today.month, today.day, 20, 20),
     ];
 
-    schedules.add(DailySchedule('낮징', aTimes));
+    schedules.add(DailySchedule('징조의 틈','낮징', aTimes));
 
     List<DateTime> bTimes = [
       DateTime(today.year, today.month, today.day, 2, 20),
@@ -31,7 +30,7 @@ class DailySchedule {
       DateTime(today.year, today.month, today.day, 22, 20),
     ];
 
-    schedules.add(DailySchedule('밤징', bTimes));
+    schedules.add(DailySchedule('전장의 안개','밤징', bTimes));
 
     List<DateTime> cTimes = [
       DateTime(today.year, today.month, today.day, 3, 20),
@@ -42,7 +41,7 @@ class DailySchedule {
       DateTime(today.year, today.month, today.day, 23, 20),
     ];
 
-    schedules.add(DailySchedule('글레샤', cTimes));
+    schedules.add(DailySchedule('영광의 행로','글레샤', cTimes));
 
     return schedules;
   }

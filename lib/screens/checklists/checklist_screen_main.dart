@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:schedule_manager/screens/schedule_screen_daily.dart';
-import 'package:schedule_manager/screens/schedule_screen_weekly.dart';
+import 'package:schedule_manager/screens/schedules/schedule_screen_daily.dart';
 
-import '../widgets/tab_bar.dart';
+import '../../widgets/tab_bar.dart';
+import '../schedules/schedule_screen_weekly.dart';
 
 
 class MainSchedule extends StatefulWidget {
@@ -17,19 +17,30 @@ class MainSchedule extends StatefulWidget {
 class _MainScheduleState extends State<MainSchedule> with TickerProviderStateMixin {
   late TabController _tabController;
 
+  int initialIndex = 2;
+
   @override
   void initState() {
     super.initState();
-    int initialIndex = widget.whereToGo == 'daily' ? 0 : 1;
-    _tabController = TabController(length: 3, vsync: this);
+    switch (widget.whereToGo) {
+      case 'daily':
+        initialIndex = 0;
+        break;
+      case 'weekly':
+        initialIndex = 1;
+        break;
+      default:
+        initialIndex = 2; // 기본값 설정
+    }
+    _tabController = TabController(length: 3, vsync: this, initialIndex: initialIndex);
   }
 
   @override
   Widget build(BuildContext context) {
     return TabBarWidget(
-      screenName: '메인 스크린',
+      screenName: '체크리스트',
       tabController: _tabController,
-      whichSchedule: 0, // 예시 값
+      whichSchedule: initialIndex,
       children: const [
         DailyScheduleScreen(),
         WeeklyScheduleScreen(),

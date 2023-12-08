@@ -5,45 +5,45 @@ class WeeklySchedule {
   // 요일별 일정 매핑
   static Map<int, List<Map<String, String>>> scheduleByWeekday = {
     1: [ // 월요일
-      {'time': '20:30', 'name': '황평'},
-      {'time': '21:00', 'name': '침공, 델유'},
-      {'time': '22:00', 'name': '아켄'},
+      {'time': '20:30', 'shortName': '황평', 'longName' : '레이드'},
+      {'time': '21:00', 'shortName': '침공, 델유', 'longName' : '레이드'},
+      {'time': '22:00', 'shortName': '아켄', 'longName' : '레이드'},
       // ... 여기에 추가 일정
     ],
     2: [ // 화요일
-      {'time': '20:30', 'name': '가루다'},
-      {'time': '21:30', 'name': '레이드'},
-      {'time': '22:00', 'name': '아켄'},
+      {'time': '20:30', 'shortName': '가루다', 'longName' : '레이드'},
+      {'time': '21:30', 'shortName': '레이드', 'longName' : '레이드'},
+      {'time': '22:00', 'shortName': '아켄', 'longName' : '레이드'},
       // ... 여기에 추가 일정
     ],
     3: [ // 화요일
-      {'time': '20:30', 'name': '가루다'},
-      {'time': '21:30', 'name': '레이드'},
-      {'time': '22:00', 'name': '아켄'},
+      {'time': '20:30', 'shortName': '가루다', 'longName' : '레이드'},
+      {'time': '21:30', 'shortName': '레이드', 'longName' : '레이드'},
+      {'time': '22:00', 'shortName': '아켄', 'longName' : '레이드'},
       // ... 여기에 추가 일정
     ],
     4: [ // 화요일
-      {'time': '20:30', 'name': '가루다'},
-      {'time': '21:30', 'name': '레이드'},
-      {'time': '22:00', 'name': '아켄'},
+      {'time': '20:30', 'shortName': '가루다', 'longName' : '레이드'},
+      {'time': '21:30', 'shortName': '레이드', 'longName' : '레이드'},
+      {'time': '22:00', 'shortName': '아켄', 'longName' : '레이드'},
       // ... 여기에 추가 일정
     ],
     5: [ // 화요일
-      {'time': '20:30', 'name': '가루다'},
-      {'time': '21:30', 'name': '레이드'},
-      {'time': '22:00', 'name': '아켄'},
+      {'time': '20:30', 'shortName': '가루다', 'longName' : '레이드'},
+      {'time': '21:30', 'shortName': '레이드', 'longName' : '레이드'},
+      {'time': '22:00', 'shortName': '아켄', 'longName' : '레이드'},
       // ... 여기에 추가 일정
     ],
     6: [ // 화요일
-      {'time': '20:30', 'name': '가루다'},
-      {'time': '21:30', 'name': '레이드'},
-      {'time': '22:00', 'name': '아켄'},
+      {'time': '20:30', 'shortName': '가루다', 'longName' : '레이드'},
+      {'time': '21:30', 'shortName': '레이드', 'longName' : '레이드'},
+      {'time': '22:00', 'shortName': '아켄', 'longName' : '레이드'},
       // ... 여기에 추가 일정
     ],
     7: [ // 화요일
-      {'time': '20:30', 'name': '가루다'},
-      {'time': '21:30', 'name': '레이드'},
-      {'time': '22:00', 'name': '아켄'},
+      {'time': '20:30', 'shortName': '가루다', 'longName' : '레이드'},
+      {'time': '21:30', 'shortName': '레이드', 'longName' : '레이드'},
+      {'time': '22:00', 'shortName': '아켄', 'longName' : '레이드'},
       // ... 여기에 추가 일정
     ],
 
@@ -60,7 +60,7 @@ class WeeklySchedule {
       DateTime time = _parseTime(scheduleData['time']!);
       if (time.isAfter(now)) {
         todaySchedules.add(
-            DailySchedule(scheduleData['name']!, [time])
+            DailySchedule(scheduleData['longName']!,scheduleData['shortName']!, [time])
         );
       }
     }

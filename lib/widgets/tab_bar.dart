@@ -18,6 +18,7 @@ class TabBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF101316), // AppBar 배경색을 검은색으로 설정
@@ -63,7 +64,15 @@ class TabBarWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Tab(icon: Icon(Icons.favorite_outline_rounded,)),
+            Tab(
+              child: Text(
+                '즐겨찾기',
+                style: TextStyle(
+                  fontSize: 18, // 텍스트 크기 변경
+                  fontWeight: FontWeight.w500, // 텍스트 두께 변경
+                ),
+              ),
+            ),
           ],
         ),
       ),
