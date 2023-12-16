@@ -16,7 +16,7 @@ class FavoriteScheduleScreen extends StatefulWidget {
 }
 
 class _FavoriteScheduleScreenState extends State<FavoriteScheduleScreen> {
-  late Timer timer;
+  Timer? timer;
   List<DailySchedule> favoriteSchedules = DailySchedule.initializeSchedules();
   // *** 모델 내용 수정하기
 
@@ -44,13 +44,15 @@ class _FavoriteScheduleScreenState extends State<FavoriteScheduleScreen> {
 
   @override
   void dispose() {
-    timer.cancel();
+    print("Dispose called-f");
+    timer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final navigationProvider = Provider.of<NavigationBarProvider>(context);
+    print('favorite index : ${widget.index}');
     return Scaffold(
       backgroundColor: Color(0xFF101316),
       body: Column(

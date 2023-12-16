@@ -48,7 +48,7 @@ class CheckCardBox extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 8, 12, 4),
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 8, 12, 2),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,7 +64,7 @@ class CheckCardBox extends StatelessWidget {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(5, 4, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                             child: Text(
                               shortName,
                               style: TextStyle(fontSize: 20,

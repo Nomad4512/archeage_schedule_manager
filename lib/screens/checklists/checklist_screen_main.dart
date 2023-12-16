@@ -11,7 +11,7 @@ class MainCheck extends StatefulWidget {
   final String whereToGo;
   final int index;
 
-  const MainCheck({Key? key, required this.whereToGo, required this.index}) : super(key: key);
+  const MainCheck({Key? key, required this.whereToGo, required this.index,}) : super(key: key);
 
   @override
   _MainCheckState createState() => _MainCheckState();
@@ -20,29 +20,41 @@ class MainCheck extends StatefulWidget {
 class _MainCheckState extends State<MainCheck> with TickerProviderStateMixin {
   late TabController _tabController;
 
-  int initialIndex = 3;
-  late String go;
-
+  int initialIndex = 4;
 
   @override
   void initState() {
     super.initState();
-    initialIndex = widget.whereToGo == 'check' ? 0 : 1;
-    go = widget.whereToGo;
+    switch (widget.whereToGo) {
+      case 'rifts' :
+        initialIndex = 0;
+        break;
+      case 'instances' :
+        initialIndex = 1;
+        break;
+      case 'dungeon' :
+        initialIndex = 2;
+        break;
+      default:
+        initialIndex = 3; // 기본값 설정
+    }
     _tabController = TabController(length: 4, vsync: this, initialIndex: initialIndex);
   }
 
   @override
   Widget build(BuildContext context) {
     print('check - initialIndex : '+'$initialIndex');
-    print('check - whereToGo : '+'$go');
+    print('check - whereToGo : '+'${widget.whereToGo}');
+    print('main index : ${widget.index}');
     return CheckTabBar(
       screenName: '체크리스트',
       tabController: _tabController,
       whichSchedule: initialIndex,
       children: [
-        RiftsCheck(),
-        Center(child: Icon(Icons.favorite_outline_rounded)),
+        RiftsCheck(index: 2,),
+        Center(child: Icon(Icons.star_border_outlined)),
+        Center(child: Icon(Icons.rectangle_outlined)),
+        Center(child: Icon(Icons.square_outlined)),
       ],
     );
   }

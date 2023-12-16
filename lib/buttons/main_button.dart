@@ -23,19 +23,25 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final navigationProvider = Provider.of<NavigationBarProvider>(context, listen: false);
+    print('button whereToGo : $whereToGo');
     return  GestureDetector(
       onTap: () {
           if(whereToGo == 'daily'){
+            navigationProvider.currentIndex = 1;
+            Navigator.pushReplacement(
+            context,
+              MaterialPageRoute(builder: (context) => MainSchedule(whereToGo: whereToGo,index: 1,)),
+            );
+        } else if (whereToGo == 'rifts'){
+            navigationProvider.currentIndex = 2;
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MainSchedule(whereToGo: whereToGo,index: 10)),
+              MaterialPageRoute(builder: (context) => MainCheck(whereToGo: whereToGo,index: 2,)),
             );
         } else {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MainCheck(whereToGo: whereToGo,index: 20)),
-            );
-        }
+        // 안내페이지 예정
+          }
 
       },
       child:

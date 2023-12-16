@@ -16,17 +16,23 @@ class DailyScheduleScreen extends StatefulWidget {
 }
 
 class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
-  late Timer timer;
+  Timer? timer;
   List<DailySchedule> dailySchedules = DailySchedule.initializeSchedules();
 
   @override
   void initState() {
     super.initState();
-    // 타이머를 설정하여 일정 업데이트
+    timer?.cancel(); // 기존 타이머가 있다면 취소
     timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => updateRemainingTime());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final navigationProvider = Provider.of<NavigationBarProvider>(context, listen: false);
+      navigationProvider.selectedIndex = widget.index; // 스크린의 인덱스로 업데이트
+    });
   }
 
   void updateRemainingTime() {
+    if(mounted){
     setState(() {
       DateTime now = DateTime.now();
       for (var schedule in dailySchedules) { // 현재 시간 이후의 가장 가까운 시간을 찾습니다.
@@ -38,17 +44,20 @@ class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
         }
       }
     });
-  }
+  }}
 
   @override
   void dispose() {
-    timer.cancel();
+    print("Dispose called-d");
+    timer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final navigationProvider = Provider.of<NavigationBarProvider>(context);
+    print('daily index : ${widget.index}');
+    print('navigationProvider.selectedIndex : ${navigationProvider.selectedIndex}');
     return Scaffold(
       backgroundColor: Color(0xFF101316),
       body: Column(

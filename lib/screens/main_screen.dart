@@ -33,8 +33,15 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void dispose() {
+    print("Dispose called-m");
+    timer?.cancel();
+    super.dispose();
+  }
 
+  @override
+  Widget build(BuildContext context) {
+  print('main');
     return Scaffold(
       backgroundColor: const Color(0xFF181818),
       body: SingleChildScrollView(
@@ -107,7 +114,7 @@ class _MainScreenState extends State<MainScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Button(text: '일정시간', bgColor: Color(0xFFF1B33B), textColor: Colors.black, whereToGo: 'daily',),
-                  Button(text: '체크리스트', bgColor: Color(0xFF1F2123), textColor: Colors.white, whereToGo: 'check',),
+                  Button(text: '체크리스트', bgColor: Color(0xFF1F2123), textColor: Colors.white, whereToGo: 'rifts',),
                 ],
               ),
               const SizedBox(
@@ -131,7 +138,7 @@ class _MainScreenState extends State<MainScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MainSchedule(index: 13, whereToGo: 'favorite',),
+                          builder: (context) => MainSchedule(index: 1, whereToGo: 'favorite',),
                         ),
                       );
                     },

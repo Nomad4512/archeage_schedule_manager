@@ -18,7 +18,7 @@ class WeeklyScheduleScreen extends StatefulWidget {
 }
 
 class _DailyScheduleScreenState extends State<WeeklyScheduleScreen> {
-  late Timer timer;
+  Timer? timer;
   List<DailySchedule> weeklySchedules = WeeklySchedule.getTodaysSchedules();
 
 
@@ -45,13 +45,15 @@ class _DailyScheduleScreenState extends State<WeeklyScheduleScreen> {
 
   @override
   void dispose() {
-    timer.cancel();
+    print("Dispose called-w");
+    timer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final navigationProvider = Provider.of<NavigationBarProvider>(context);
+    print('weekly index : ${widget.index}');
     return Scaffold(
       backgroundColor: Color(0xFF101316),
       body: Column(
