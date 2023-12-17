@@ -22,6 +22,7 @@ class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
   @override
   void initState() {
     super.initState();
+    print("initState called - Timer setting up");
     timer?.cancel(); // 기존 타이머가 있다면 취소
     timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => updateRemainingTime());
 
@@ -32,6 +33,7 @@ class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
   }
 
   void updateRemainingTime() {
+    print("updateRemainingTime called");
     if(mounted){
     setState(() {
       DateTime now = DateTime.now();
@@ -50,12 +52,14 @@ class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
   void dispose() {
     print("Dispose called-d");
     timer?.cancel();
+    print("Is timer active? ${timer?.isActive}");
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final navigationProvider = Provider.of<NavigationBarProvider>(context);
+    print('build called - DailyScheduleScreen');
     print('daily index : ${widget.index}');
     print('navigationProvider.selectedIndex : ${navigationProvider.selectedIndex}');
     return Scaffold(
@@ -74,7 +78,6 @@ class _DailyScheduleScreenState extends State<DailyScheduleScreen> {
           Expanded(
             flex: 2,
             child: NaviBar(
-              currentIndex: navigationProvider.selectedIndex,
               onTap: (index) {
                 navigationProvider.selectedIndex = index; // 선택된 인덱스 업데이트
               },

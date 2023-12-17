@@ -69,7 +69,6 @@ class _FavoriteScheduleScreenState extends State<FavoriteScheduleScreen> {
           Expanded(
             flex: 2,
             child: NaviBar(
-              currentIndex: navigationProvider.selectedIndex,
               onTap: (index) {
                 navigationProvider.selectedIndex = index; // 선택된 인덱스 업데이트
               },

@@ -25,8 +25,13 @@ class _DailyScheduleScreenState extends State<WeeklyScheduleScreen> {
   @override
   void initState() {
     super.initState();
-    // 타이머를 설정하여 일정 업데이트
+    timer?.cancel();
     timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => updateRemainingTime());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final navigationProvider = Provider.of<NavigationBarProvider>(context, listen: false);
+      navigationProvider.selectedIndex = widget.index; // 스크린의 인덱스로 업데이트
+    });
   }
 
   void updateRemainingTime() {
@@ -54,6 +59,8 @@ class _DailyScheduleScreenState extends State<WeeklyScheduleScreen> {
   Widget build(BuildContext context) {
     final navigationProvider = Provider.of<NavigationBarProvider>(context);
     print('weekly index : ${widget.index}');
+    print('weekly index : ${widget.index}');
+    print('navigationProvider.selectedIndex : ${navigationProvider.selectedIndex}');
     return Scaffold(
       backgroundColor: Color(0xFF101316),
       body: Column(
@@ -70,7 +77,6 @@ class _DailyScheduleScreenState extends State<WeeklyScheduleScreen> {
           Expanded(
             flex: 2,
             child: NaviBar(
-              currentIndex: navigationProvider.selectedIndex,
               onTap: (index) {
                 navigationProvider.selectedIndex = index; // 선택된 인덱스 업데이트
               },

@@ -34,7 +34,7 @@ class TabBarWidget extends StatelessWidget {
             color: Colors.white,
             size: 30,), // 뒤로 가기 버튼 커스터마이즈
           onPressed: () {
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => MainScreen()),
             );

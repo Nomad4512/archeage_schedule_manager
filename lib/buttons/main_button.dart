@@ -35,13 +35,13 @@ class Button extends StatelessWidget {
             );
         } else if (whereToGo == 'rifts'){
             navigationProvider.currentIndex = 2;
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => MainCheck(whereToGo: whereToGo,index: 2,)),
             );
         } else {
         // 안내페이지 예정
-          }
+        }
 
       },
       child:

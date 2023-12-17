@@ -17,11 +17,22 @@ class RiftsCheck extends StatefulWidget {
 class _RiftsCheckState extends State<RiftsCheck> {
   List<Checklist> checklists = Checklist.initializeCheck();
 
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final navigationProvider = Provider.of<NavigationBarProvider>(
+          context, listen: false);
+      navigationProvider.selectedIndex = widget.index;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     final navigationProvider = Provider.of<NavigationBarProvider>(context);
     print('rifts index : ${widget.index}');
+    print('rifts selectedIndex : ${navigationProvider.selectedIndex}');
     return Scaffold(
       backgroundColor: Color(0xFF101316),
       body: Column(
@@ -38,7 +49,6 @@ class _RiftsCheckState extends State<RiftsCheck> {
           Expanded(
             flex: 2,
             child: NaviBar(
-              currentIndex: navigationProvider.selectedIndex,
               onTap: (index) {
                 navigationProvider.selectedIndex = index; // 선택된 인덱스 업데이트
               },

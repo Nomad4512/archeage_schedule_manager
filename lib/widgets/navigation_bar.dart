@@ -1,23 +1,26 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:schedule_manager/screens/checklists/checklist_screen_main.dart';
 import 'package:schedule_manager/screens/schedules/schedule_screen_main.dart';
 
 import '../screens/checklists/checklist_screen_rifts.dart';
 import '../screens/main_screen.dart';
 import '../screens/schedules/schedule_screen_daily.dart';
+import 'navigation_bar_provider.dart';
 
 class NaviBar extends StatelessWidget {
-  final int currentIndex;
   final Function(int) onTap;
 
   NaviBar({
-    super.key, required this.currentIndex, required this.onTap,
+    super.key, required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
+    final navigationProvider = Provider.of<NavigationBarProvider>(context);
+    int currentIndex = navigationProvider.selectedIndex;
     print('currentIndex'+'$currentIndex');
     return Row(
       children: [
@@ -38,6 +41,7 @@ class NaviBar extends StatelessWidget {
                 iconSize: MediaQuery.of(context).size.height * 0.04, // 화면 높이에 따라 아이콘 크기 조절
                 onPressed: () {
                   onTap(1);
+                  navigationProvider.selectedIndex = 1;
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => MainSchedule(index: 1, whereToGo: 'daily',)),
@@ -49,7 +53,7 @@ class NaviBar extends StatelessWidget {
                 color: Color(0xFF97A1AB),
                 iconSize: MediaQuery.of(context).size.height * 0.04, // 화면 높이에 따라 아이콘 크기 조절
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => const MainScreen()),
                   );
@@ -61,7 +65,8 @@ class NaviBar extends StatelessWidget {
                 iconSize: MediaQuery.of(context).size.height * 0.04, // 화면 높이에 따라 아이콘 크기 조절
                 onPressed: () {
                   onTap(2);
-                  Navigator.push(
+                  navigationProvider.selectedIndex = 2;
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => MainCheck(index: 2, whereToGo: 'rifts',)),
                   );

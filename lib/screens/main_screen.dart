@@ -25,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     super.initState();
     // 1초마다 현재 시간 업데이트
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
       setState(() {
         formattedTime = DateFormat('hh:mm:ss a').format(DateTime.now());
       });
@@ -34,8 +34,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void dispose() {
-    print("Dispose called-m");
     timer?.cancel();
+    print("Dispose called-m");
     super.dispose();
   }
 
@@ -135,7 +135,7 @@ class _MainScreenState extends State<MainScreen> {
                   TextButton(
                     onPressed: () {
                       // 버튼 클릭 시 실행할 로직
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => MainSchedule(index: 1, whereToGo: 'favorite',),
